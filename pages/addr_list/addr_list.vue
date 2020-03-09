@@ -63,12 +63,12 @@
 			this.list = list;
 			this.listCur = list[0];
 			
-			console.log(list)
+			console.log(this.store.getters.userInfo.userId)
 			
 			uni.request({
 				url: this.store.getters.baseUrl + '/user/findMyFriends',
 				data: {
-					myUserId: this.store.getters.userInfo.id
+					myUserId: this.store.getters.userInfo.userId
 				},
 				method: 'POST',
 				dataType:'application/json',

@@ -8,8 +8,8 @@ const store = new Vuex.Store({
 		baseUrl: 'http://localhost:8080',
 		hasLogin: false,
 		isSocketOpen: false,
-		userInfo: {},
-		userStatus: {}
+		userInfo: [],
+		userStatus: []
 	},	
 	mutations: {
 		login(state, userInfo) {
