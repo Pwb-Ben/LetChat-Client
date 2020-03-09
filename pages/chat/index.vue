@@ -12,10 +12,10 @@
 		</view>
 		<mz-network-error @clickFn="hancleClick"></mz-network-error>
 		<view class="cu-list menu-avatar">
-			<view class="cu-item" @click="toChat" style="background-color: #f7f7f7;">
+			<view class="cu-item" @tap="toChat">
 				<!-- 头像 -->
-				<view class="cu-avatar radius lg" style="background-image:url(https://ossweb-img.qq.com/images/lol/img/champion/Taric.png);">
-					<!-- 未读记录条数 -->
+				<view class="cu-avatar radius lg" style="background-image:url(../../static/img/default.png);">
+					<!-- 未签收记录条数 -->
 					<view class="cu-tag badge">10</view>
 				</view>
 				<view class="content">
@@ -78,36 +78,40 @@
 		},
 		data() {
 			return {
-				title: 'Hello'
+				chatUserList:[{}],
+				tapId:'',
+				userInfo:''
 			}
 		},
 		onLoad() {
-
+			uni.clearStorage()
+			if(!this.store.getters.hasLogin){
+				uni.navigateTo({
+					url:'../user/login'
+				})
+			}
+			console.log("isSocketOpen:" + this.store.getters.isSocketOpen);
+		},
+		onShow() {
+			this.userInfo = this.store.getters.userInfo
 		},
 		methods: {
 			hancleClick() {
 				settings.openAppSetting();
-				uni.showToast({
-				    title: 'hello',
-				    duration: 2000
-				});
 			},
 			toChat() {
-				uni.showToast({
-					title:"123"
+				uni.navigateTo({
+					url:'chat'
 				});
-				// uni.navigateTo({
-				// 	url:'pages/chat/chat'
+				// uni.sendSocketMessage({
+				// 	data: JSON.stringify({action:'1',userId:'456'}),
+				// 	success:function(res){
+						
+				// 	},
+				// 	fail:function(res){
+						
+				// 	}
 				// });
-				uni.sendSocketMessage({
-					data: JSON.stringify({action:'1',userId:'456'}),
-					success:function(res){
-						
-					},
-					fail:function(res){
-						
-					}
-				});
 			}
 		}
 	}

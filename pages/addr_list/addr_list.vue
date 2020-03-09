@@ -12,12 +12,12 @@
 		</view>
 		<scroll-view scroll-y class="indexes" :scroll-into-view="'indexes-'+ listCurID" :style="[{height:'calc(100vh - '+ CustomBar + 'px - 50px)'}]"
 		 :scroll-with-animation="true" :enable-back-to-top="true">
-			<block v-for="(item,index) in list" :key="index">
+			<block v-for="(item,index) in myFriendsList" :key="index">
 				<view :class="'indexItem-' + item.name" :id="'indexes-' + item.name" :data-index="item.name">
 					<view class="padding">{{item.name}}</view>
 					<view class="cu-list menu-avatar no-padding">
 						<view class="cu-item" v-for="(items,sub) in 2" :key="sub">
-							<view class="cu-avatar round lg">{{item.name}}</view>
+							<view class="cu-avatar radius lg">{{item.name}}</view>
 							<view class="content">
 								<view class="text-grey">{{item.name}}<text class="text-abc">{{list[sub].name}}</text>君</view>
 								<view class="text-gray text-sm">
@@ -51,6 +51,7 @@
 				listCurID: '',
 				list: [],
 				listCur: '',
+				myFriendsList: []
 			};
 		},
 		onLoad() {
@@ -61,6 +62,25 @@
 			}
 			this.list = list;
 			this.listCur = list[0];
+			
+			console.log(list)
+			
+			uni.request({
+				url: this.store.getters.baseUrl + '/user/findMyFriends',
+				data: {
+					myUserId: this.store.getters.userInfo.id
+				},
+				method: 'POST',
+				dataType:'application/json',
+				success: (res) => {
+					console.log(res.data)
+					if(res.statusCode!=200){
+						console.log(res.data)
+					}else{
+						this.myFriendsList = res.data
+					}
+				}
+			})
 		},
 		onReady() {
 			let that = this;

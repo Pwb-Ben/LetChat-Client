@@ -24,6 +24,21 @@
 			"path": "pages/my/my",
 			"style": {
 			}
+		},
+		{
+			"path": "pages/user/login",
+			"style": {
+			}
+		},
+		{
+			"path": "pages/user/register",
+			"style": {
+			}
+		},
+		{
+			"path": "pages/user/blog",
+			"style": {
+			}
 		}
 	],
 	"globalStyle": {

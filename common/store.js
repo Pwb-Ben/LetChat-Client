@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
 	state: {
+		baseUrl: 'http://localhost:8080',
 		hasLogin: false,
 		isSocketOpen: false,
 		userInfo: {},
@@ -34,6 +35,9 @@ const store = new Vuex.Store({
 		}
 	},
 	getters: {
+		baseUrl: (state, getters) => {
+			return state.baseUrl
+		},
 		isSocketOpen: (state, getters) => {
 		    return state.isSocketOpen
 		},

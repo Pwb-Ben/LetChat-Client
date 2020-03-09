@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<cu-custom bgColor="bg-gradual-pink" :isBack="true"><block slot="backText">返回</block><block slot="content">聊天</block></cu-custom>
+		<cu-custom bgColor="#f7f7f7" :isBack="true"><block slot="backText">返回</block><block slot="content">聊天</block></cu-custom>
 		<view class="cu-chat">
 			<view class="cu-item self">
 				<view class="main">
@@ -104,7 +104,8 @@
 				this.InputBottom = e.detail.height
 			},
 			InputBlur(e) {
-				this.InputBottom = 0
+				this.InputBottom = 0;
+				
 			}
 		}
 	}
