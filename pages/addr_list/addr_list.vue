@@ -56,7 +56,7 @@
 		},
 		onLoad() {
 			let list = [{}];
-			for (let i = 0; i < 26; i++) {
+			for (let i = 0; i < 27; i++) {
 				list[i] = {};
 				list[i].name = String.fromCharCode(65 + i);
 			}
