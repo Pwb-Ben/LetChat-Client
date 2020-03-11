@@ -72,6 +72,7 @@
 <script>
 	import mzNetworkError from '@/components/mz-network-error/mz-network-error.vue'
 	import settings from "@/common/settings.js"
+	import socket from "../../common/socket.js"
 	export default {
 		components: {
 			mzNetworkError
@@ -93,7 +94,12 @@
 			console.log("isSocketOpen:" + this.store.getters.isSocketOpen);
 		},
 		onShow() {
-			this.userInfo = this.store.getters.userInfo
+			this.userInfo = this.store.getters.userInfo;
+			
+			if(!this.store.getters.isSocketOpen){
+				console.log('on show start connect');
+				socket.connectServer(this.userInfo.id);
+			}
 		},
 		methods: {
 			hancleClick() {

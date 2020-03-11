@@ -6,10 +6,11 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
 	state: {
 		baseUrl: 'http://localhost:8080',
+		websocketUrl: 'ws://localhost:8088/ws',
 		hasLogin: false,
 		isSocketOpen: false,
 		userInfo: [],
-		userStatus: []
+		
 	},	
 	mutations: {
 		login(state, userInfo) {
@@ -23,7 +24,7 @@ const store = new Vuex.Store({
 		logout(state) {
 			state.hasLogin = false;
 			state.userInfo = {};
-			uni.removeStorage({  
+			uni.removeStorage({
 		        key: 'userInfo'
 		    })
 		},
@@ -37,6 +38,9 @@ const store = new Vuex.Store({
 	getters: {
 		baseUrl: (state, getters) => {
 			return state.baseUrl
+		},
+		websocketUrl: (state, getters) => {
+			return state.websocketUrl
 		},
 		isSocketOpen: (state, getters) => {
 		    return state.isSocketOpen

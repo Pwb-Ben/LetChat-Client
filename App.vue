@@ -30,8 +30,7 @@
 			})
 		},
 		onShow: function() {
-			console.log('on show start connect');
-			socket.connectServer(JSON.stringify({action:'1',userId:'123'}));
+			
 		},
 		onHide: function() {
 			console.log('App Hide')

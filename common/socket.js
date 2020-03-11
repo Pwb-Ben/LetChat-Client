@@ -1,23 +1,21 @@
 import store from './store.js'
+import common from './common.js'
 
 class WebSocekt {
 	constructor(arg) {
-	    this.socketUrl = 'ws://localhost:8088/ws'
+	    this.socketUrl = store.getters.websocketUrl;
 	}
 	
-	connectServer(packet){
+	connectServer(arg){
 		console.log('开始链接')
 		var socketTask = uni.connectSocket({
 		    url: this.socketUrl,
 		    data() {
-		        return {
-		            packet
-		        };
+		        return JSON.stringify({
+		            action: common.CONNECT,
+					userId: arg
+		        });
 		    },
-		    // header: {
-		    //     'content-type': 'application/json'
-		    // },
-		    // method: 'POST',
 			success: function(res) {
 				 console.log('成功连接服务器')
 			},
@@ -34,15 +32,11 @@ class WebSocekt {
 		socketTask.onOpen(function(res) {
 			console.log("websocket已打开")
 			store.commit('openSocekt')
-			uni.sendSocketMessage({
-				data: JSON.stringify({action:'1',userId:'123'}),
-				success:function(res){
-					
-				},
-				fail:function(res){
-					
-				}
-			})
+			setInterval(function(){
+				uni.sendSocketMessage({
+					data: JSON.stringify({action: common.KEEPALIVE})
+				}) 
+			},5000)
 		})
 		
 		socketTask.onClose(function(){

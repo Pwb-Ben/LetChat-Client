@@ -69,7 +69,6 @@
 					method: 'POST',
 					dataType:'application/json',
 				    success: (res) => {
-						console.log(res)
 						if(res.statusCode!=200){
 							console.log(res.data)
 						}else{

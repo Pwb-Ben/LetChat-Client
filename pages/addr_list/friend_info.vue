@@ -25,38 +25,36 @@
 				<view class="cuIcon-qrcode text-gray text-xsl"></view>
 				<view class="cuIcon-right text-gray text-xsl"></view>
 			</view>
+			<view class="cu-item" :class="'arrow'">
+				<view class="content">
+					<text class="cuIcon-pay text-grey"></text>
+					<text class="text-grey">设置备注和标签</text>
+				</view>
+			</view>
+			<view class="cu-item" :class="'arrow'">
+				<view class="content">
+					<text class="cuIcon-pay text-grey"></text>
+					<text class="text-grey">朋友权限</text>
+				</view>
+			</view>
 		</view>
 		
 		<view class="cu-list menu" :class="['sm-border']">
 			<view class="cu-item" :class="'arrow'">
 				<view class="content">
-					<text class="cuIcon-pay text-grey"></text>
-					<text class="text-grey">支付</text>
-				</view>
-			</view>
-		</view>
-		<view class="cu-list menu" :class="['sm-border']">
-			<view class="cu-item" :class="'arrow'">
-				<view class="content">
 					<text class="cuIcon-favor text-grey"></text>
-					<text class="text-grey">收藏</text>
+					<text class="text-grey">朋友圈</text>
 				</view>
 			</view>
 			<view class="cu-item" :class="'arrow'">
 				<view class="content">
 					<text class="cuIcon-pic text-grey"></text>
-					<text class="text-grey">相册</text>
+					<text class="text-grey">更多信息</text>
 				</view>
 			</view>
 		</view>
-		<view class="cu-list menu" :class="['sm-border']">
-			<view class="cu-item" :class="'arrow'">
-				<view class="content">
-					<text class="cuIcon-settings text-grey"></text>
-					<text class="text-grey">设置</text>
-				</view>
-			</view>
-		</view>
+		
+		
 	</view>
 </template>
 
@@ -66,6 +64,7 @@
 		},
 		data() {
 			return {
+				userInfo:[]
 			}
 		},
 		onLoad() {
