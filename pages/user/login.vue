@@ -75,6 +75,35 @@
 							let userInfo = JSON.parse(res.data)
 							console.log(userInfo)
 							this.store.commit('login', userInfo)
+							
+							uni.request({
+								url: this.store.getters.baseUrl + '/user/findMyFriends',
+								data: userInfo.id,
+								method: 'POST',
+								dataType:'application/json',
+								success: (res) => {
+									if(res.statusCode!=200){
+										console.log(res.data)
+									}else{
+										console.log(JSON.parse(res.data))
+									}
+								}
+							})
+							
+							uni.request({
+								url: this.store.getters.baseUrl + '/user/queryFriendRequests',
+								data: userInfo.id,
+								method: 'POST',
+								dataType:'application/json',
+								success: (res) => {
+									if(res.statusCode!=200){
+										console.log(res.data)
+									}else{
+										console.log(JSON.parse(res.data))
+									}
+								}
+							})
+							
 							uni.navigateBack()
 						}
 				    }

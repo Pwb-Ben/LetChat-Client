@@ -81,7 +81,8 @@
 			return {
 				chatUserList:[{}],
 				tapId:'',
-				userInfo:''
+				userInfo:'',
+				isTap: false
 			}
 		},
 		onLoad() {
@@ -105,6 +106,9 @@
 			hancleClick() {
 				settings.openAppSetting();
 			},
+			touch() {
+				this.isTap = !this.isTap
+			},
 			toChat() {
 				uni.navigateTo({
 					url:'chat'
@@ -124,5 +128,5 @@
 </script>
 
 <style>
-	
+
 </style>
