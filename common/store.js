@@ -10,7 +10,8 @@ const store = new Vuex.Store({
 		hasLogin: false,
 		isSocketOpen: false,
 		userInfo: [],
-		
+		myFriendsList: [],
+		myFriendsRequestList: []
 	},	
 	mutations: {
 		login(state, userInfo) {
@@ -33,6 +34,20 @@ const store = new Vuex.Store({
 		},
 		closeSocekt(state) {
 			state.isSocketOpen = false
+		},
+		setMyFriendsList(state, myFriendsList) {
+			state.myFriendsList = myFriendsList;
+			uni.setStorage({//缓存用户登陆状态
+			    key: 'myFriendsList',
+			    data: myFriendsList
+			})
+		},
+		setMyFriendsRequestList(state, myFriendsRequestList) {
+			state.myFriendsRequestList = myFriendsRequestList;
+			uni.setStorage({//缓存用户登陆状态
+			    key: 'myFriendsRequestList',
+			    data: myFriendsRequestList
+			})
 		}
 	},
 	getters: {

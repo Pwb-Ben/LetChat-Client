@@ -85,7 +85,9 @@
 									if(res.statusCode!=200){
 										console.log(res.data)
 									}else{
-										console.log(JSON.parse(res.data))
+										let MyFriendsList = JSON.parse(res.data)
+										this.store.commit('setMyFriendsList', MyFriendsList)
+										console.log(MyFriendsList)
 									}
 								}
 							})
@@ -99,7 +101,9 @@
 									if(res.statusCode!=200){
 										console.log(res.data)
 									}else{
-										console.log(JSON.parse(res.data))
+										let myFriendsRequestList = JSON.parse(res.data)
+										this.store.commit('setMyFriendsRequestList', myFriendsRequestList)
+										console.log(myFriendsRequestList)
 									}
 								}
 							})
