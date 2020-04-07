@@ -86,13 +86,13 @@
 			}
 		},
 		onLoad() {
-			uni.clearStorage()
-			if(!this.store.getters.hasLogin){
-				uni.navigateTo({
-					url:'../user/login'
-				})
-			}
-			console.log("isSocketOpen:" + this.store.getters.isSocketOpen);
+			// uni.clearStorage()
+			// if(!this.store.getters.hasLogin){
+			// 	uni.navigateTo({
+			// 		url:'../user/login'
+			// 	})
+			// }
+			// console.log("isSocketOpen:" + this.store.getters.isSocketOpen);
 		},
 		onShow() {
 			this.userInfo = this.store.getters.userInfo;
